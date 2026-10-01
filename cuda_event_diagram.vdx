@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisioDocument xmlns="http://schemas.microsoft.com/visio/2003/core">
+  <Pages>
+    <Page ID="0" NameU="Page-1">
+      <PageSheet>
+        <Cell N="PageWidth" V="17.5"/>
+        <Cell N="PageHeight" V="9.5"/>
+      </PageSheet>
+      <Shapes>
+        <!-- 标题栏 -->
+        <Shape ID="1" NameU="TitleBar" Type="Shape">
+          <XForm>
+            <PinX>8.75</PinX>
+            <PinY>8.9</PinY>
+            <Width>12.2</Width>
+            <Height>0.7</Height>
+          </XForm>
+          <Fill><FillForegnd>#0B4FA3</FillForegnd></Fill>
+          <Line><LineColor>#0B4FA3</LineColor></Line>
+          <Text>CUDA Event 与 Host/Device 时间关系（包含 LaunchKernel API 耗时）</Text>
+          <Char IX="0"><Font>Arial</Font><Size>14</Size><Color>#FFFFFF</Color></Char>
+        </Shape>
+
+        <!-- Host 时间轴标签 -->
+        <Shape ID="2" NameU="HostLabel" Type="Shape">
+          <XForm>
+            <PinX>0.85</PinX>
+            <PinY>7.3</PinY>
+            <Width>1.55</Width>
+            <Height>0.78</Height>
+          </XForm>
+          <Fill><FillForegnd>#2B8BFF</FillForegnd></Fill>
+          <Line><LineColor>#2B8BFF</LineColor></Line>
+          <Text>Host 时间轴
+(CPU 端代码执行)</Text>
+          <Char IX="0"><Font>Arial</Font><Size>11</Size><Color>#FFFFFF</Color></Char>
+        </Shape>
+
+        <!-- Device 时间轴标签 -->
+        <Shape ID="3" NameU="DeviceLabel" Type="Shape">
+          <XForm>
+            <PinX>0.85</PinX>
+            <PinY>5.35</PinY>
+            <Width>1.55</Width>
+            <Height>0.78</Height>
+          </XForm>
+          <Fill><FillForegnd>#2CB673</FillForegnd></Fill>
+          <Line><LineColor>#2CB673</LineColor></Line>
+          <Text>Device 时间轴
+(GPU 端执行)</Text>
+          <Char IX="0"><Font>Arial</Font><Size>11</Size><Color>#FFFFFF</Color></Char>
+        </Shape>
+
+        <!-- Host 时间轴箭头 -->
+        <Shape ID="4" NameU="HostRowArrow" Type="Shape">
+          <XForm>
+            <PinX>7.75</PinX>
+            <PinY>7.3</PinY>
+            <Width>11.0</Width>
+            <Height>0.08</Height>
+          </XForm>
+          <Line><LineColor>#1A73D1</LineColor><LineWeight>1.5</LineWeight></Line>
+        </Shape>
+
+        <!-- Device 时间轴箭头 -->
+        <Shape ID="5" NameU="DeviceRowArrow" Type="Shape">
+          <XForm>
+            <PinX>7.75</PinX>
+            <PinY>5.35</PinY>
+            <Width>11.0</Width>
+            <Height>0.08</Height>
+          </XForm>
+          <Line><LineColor>#1A73D1</LineColor><LineWeight>1.5</LineWeight></Line>
+        </Shape>
+
+        <!-- Host: EventRecord(begin) -->
+        <Shape ID="6" NameU="HostBegin" Type="Shape">
+          <XForm>
+            <PinX>2.5</PinX>
+            <PinY>7.3</PinY>
+            <Width>2.1</Width>
+            <Height>0.8</Height>
+          </XForm>
+          <Fill><FillForegnd>#D9EBFF</FillForegnd></Fill>
+          <Line><LineColor>#1E88E5</LineColor></Line>
+          <Text>EventRecord(begin)
+(CUDA API 调用)</Text>
+          <Char IX="0"><Font>Arial</Font><Size>11</Size></Char>
+        </Shape>
+
+        <!-- Host: sleep(1s) -->
+        <Shape ID="7" NameU="Sleep" Type="Shape">
+          <XForm>
+            <PinX>4.7</PinX>
+            <PinY>7.3</PinY>
+            <Width>2.0</Width>
+            <Height>0.8</Height>
+          </XForm>
+          <Fill><FillForegnd>#F6D6E4</FillForegnd></Fill>
+          <Line><LineColor>#E53935</LineColor></Line>
+          <Text>sleep(1s)
+(Host 端睡眠)</Text>
+          <Char IX="0"><Font>Arial</Font><Size>11</Size></Char>
+        </Shape>
+
+        <!-- Host: LaunchKernel -->
+        <Shape ID="8" NameU="LaunchKernel" Type="Shape">
+          <XForm>
+            <PinX>6.8</PinX>
+            <PinY>7.3</PinY>
+            <Width>2.1</Width>
+            <Height>0.8</Height>
+          </XForm>
+          <Fill><FillForegnd>#E9E0FF</FillForegnd></Fill>
+          <Line><LineColor>#7C4DFF</LineColor></Line>
+          <Text>LaunchKernel
+(CUDA API 调用)</Text>
+          <Char IX="0"><Font>Arial</Font><Size>11</Size></Char>
+        </Shape>
+
+        <!-- Host: EventRecord(end) -->
+        <Shape ID="9" NameU="HostEnd" Type="Shape">
+          <XForm>
+            <PinX>10.4</PinX>
+            <PinY>7.3</PinY>
+            <Width>2.1</Width>
+            <Height>0.8</Height>
+          </XForm>
+          <Fill><FillForegnd>#E7E9FF</FillForegnd></Fill>
+          <Line><LineColor>#4C6EF5</LineColor></Line>
+          <Text>EventRecord(end)
+(CUDA API 调用)</Text>
+          <Char IX="0"><Font>Arial</Font><Size>11</Size></Char>
+        </Shape>
+
+        <!-- Device: begin Event -->
+        <Shape ID="10" NameU="DeviceBegin" Type="Shape">
+          <XForm>
+            <PinX>2.5</PinX>
+            <PinY>5.35</PinY>
+            <Width>2.0</Width>
+            <Height>0.8</Height>
+          </XForm>
+          <Fill><FillForegnd>#D7EBFF</FillForegnd></Fill>
+          <Line><LineColor>#1E88E5</LineColor></Line>
+          <Text>begin Event
+(GPU 记录时间)</Text>
+          <Char IX="0"><Font>Arial</Font><Size>11</Size></Char>
+        </Shape>
+
+        <!-- Device: Host-induced delay -->
+        <Shape ID="11" NameU="HostInducedDelay" Type="Shape">
+          <XForm>
+            <PinX>4.7</PinX>
+            <PinY>5.35</PinY>
+            <Width>2.8</Width>
+            <Height>0.8</Height>
+          </XForm>
+          <Fill><FillForegnd>#F5D6D6</FillForegnd></Fill>
+          <Line><LineColor>#F44336</LineColor></Line>
+          <Text>Host-induced delay
+(由于 Host sleep + LaunchKernel 提交延迟)</Text>
+          <Char IX="0"><Font>Arial</Font><Size>10</Size></Char>
+        </Shape>
+
+        <!-- Device: Kernel -->
+        <Shape ID="12" NameU="Kernel" Type="Shape">
+          <XForm>
+            <PinX>6.85</PinX>
+            <PinY>5.35</PinY>
+            <Width>1.8</Width>
+            <Height>0.8</Height>
+          </XForm>
+          <Fill><FillForegnd>#D3F0DE</FillForegnd></Fill>
+          <Line><LineColor>#2E7D32</LineColor></Line>
+          <Text>Kernel
+(GPU 执行)</Text>
+          <Char IX="0"><Font>Arial</Font><Size>11</Size></Char>
+        </Shape>
+
+        <!-- Device: Host 传递延迟 -->
+        <Shape ID="13" NameU="HostTransfer" Type="Shape">
+          <XForm>
+            <PinX>9.05</PinX>
+            <PinY>5.35</PinY>
+            <Width>2.0</Width>
+            <Height>0.8</Height>
+          </XForm>
+          <Fill><FillForegnd>#D9D5FF</FillForegnd></Fill>
+          <Line><LineColor>#7E57C2</LineColor></Line>
+          <Text>Host 传递延迟
+(EventRecord(end) 等待)</Text>
+          <Char IX="0"><Font>Arial</Font><Size>10</Size></Char>
+        </Shape>
+
+        <!-- Device: end Event -->
+        <Shape ID="14" NameU="DeviceEnd" Type="Shape">
+          <XForm>
+            <PinX>10.9</PinX>
+            <PinY>5.35</PinY>
+            <Width>2.1</Width>
+            <Height>0.8</Height>
+          </XForm>
+          <Fill><FillForegnd>#DDEBFF</FillForegnd></Fill>
+          <Line><LineColor>#5C6BC0</LineColor></Line>
+          <Text>end Event
+(GPU 记录时间)</Text>
+          <Char IX="0"><Font>Arial</Font><Size>11</Size></Char>
+        </Shape>
+
+        <!-- Kernel Dur 标签 -->
+        <Shape ID="15" NameU="KernelDuration" Type="Shape">
+          <XForm>
+            <PinX>6.4</PinX>
+            <PinY>4.75</PinY>
+            <Width>2.4</Width>
+            <Height>0.42</Height>
+          </XForm>
+          <Fill><FillForegnd>#CDEFD8</FillForegnd></Fill>
+          <Line><LineColor>#2E7D32</LineColor></Line>
+          <Text>Kernel Dur</Text>
+          <Char IX="0"><Font>Arial</Font><Size>11</Size><Color>#2E7D32</Color></Char>
+        </Shape>
+
+        <!-- 总时间标签 -->
+        <Shape ID="16" NameU="TotalLabel" Type="Shape">
+          <XForm>
+            <PinX>7.75</PinX>
+            <PinY>4.0</PinY>
+            <Width>4.2</Width>
+            <Height>0.32</Height>
+          </XForm>
+          <Text>CUDA Event elapsed time
+(包含 Host-induced delay + Kernel + 可能的提交延迟)</Text>
+          <Char IX="0"><Font>Arial</Font><Size>12</Size><Color>#1E88E5</Color></Char>
+        </Shape>
+
+        <!-- 说明区块 1 -->
+        <Shape ID="17" NameU="Section1" Type="Shape">
+          <XForm>
+            <PinX>2.0</PinX>
+            <PinY>2.3</PinY>
+            <Width>3.2</Width>
+            <Height>2.2</Height>
+          </XForm>
+          <Fill><FillForegnd>#DDECFF</FillForegnd></Fill>
+          <Line><LineColor>#1E88E5</LineColor></Line>
+          <Text>对应关系说明：
+1 Host EventRecord(begin) ↔ Device begin Event
+2 Host sleep(1s) ↔ Device Host-induced delay
+3 Host LaunchKernel ↔ Device Kernel
+4 Host EventRecord(end) ↔ Device end Event</Text>
+          <Char IX="0"><Font>Arial</Font><Size>10</Size></Char>
+        </Shape>
+
+        <!-- 说明区块 2 -->
+        <Shape ID="18" NameU="Section2" Type="Shape">
+          <XForm>
+            <PinX>6.0</PinX>
+            <PinY>2.3</PinY>
+            <Width>3.2</Width>
+            <Height>2.2</Height>
+          </XForm>
+          <Fill><FillForegnd>#EAF6FF</FillForegnd></Fill>
+          <Line><LineColor>#1E88E5</LineColor></Line>
+          <Text>时间测量的不同含义
+CUDA Event elapsed time: 包含 Host-induced delay + Kernel
+Insight Kernel Dur: 仅 Kernel 在 GPU 上的执行时间
+LaunchKernel API Dur: Host 端调用的耗时
+Host Wall Time: 从开始到结束的总时间</Text>
+          <Char IX="0"><Font>Arial</Font><Size>10</Size></Char>
+        </Shape>
+
+        <!-- 说明区块 3 -->
+        <Shape ID="19" NameU="Section3" Type="Shape">
+          <XForm>
+            <PinX>10.0</PinX>
+            <PinY>2.3</PinY>
+            <Width>3.5</Width>
+            <Height>2.2</Height>
+          </XForm>
+          <Fill><FillForegnd>#E8F7E8</FillForegnd></Fill>
+          <Line><LineColor>#2E7D32</LineColor></Line>
+          <Text>预期结果示例（1ms Kernel 为例）
+测量项                  预期时间
+Host Wall Time      ≈ 1000ms + 1ms + 额外延迟
+CUDA Event elapsed  ≈ 1000ms + 1ms + 额外延迟
+Kernel Dur          ≈ 1ms
+LaunchKernel Dur    ≈ 10~100μs</Text>
+          <Char IX="0"><Font>Arial</Font><Size>10</Size></Char>
+        </Shape>
+
+        <!-- 关键结论 -->
+        <Shape ID="20" NameU="KeyConclusion" Type="Shape">
+          <XForm>
+            <PinX>14.0</PinX>
+            <PinY>2.3</PinY>
+            <Width>2.3</Width>
+            <Height>2.2</Height>
+          </XForm>
+          <Fill><FillForegnd>#FDF0D3</FillForegnd></Fill>
+          <Line><LineColor>#FFB300</LineColor></Line>
+          <Text>关键结论
+EventRecord(end) 的 API 耗时不等于 Kernel 时间。
+只有 Kernel 相关的统计才更接近真正的 GPU 执行时间。</Text>
+          <Char IX="0"><Font>Arial</Font><Size>10</Size></Char>
+        </Shape>
+
+      </Shapes>
+    </Page>
+  </Pages>
+</VisioDocument>
